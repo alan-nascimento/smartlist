@@ -1,7 +1,6 @@
-import { TaskController } from './controllers/index';
+import { TaskController } from './ts/controllers/index';
 
 const controller = new TaskController();
-
-document.querySelector('#task-submit').addEventListener('click', () => {
-  controller.addTask.bind(controller);
-});
+document.getElementById('task-form').onsubmit = function () {
+  controller.add.bind(controller);
+};

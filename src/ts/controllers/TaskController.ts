@@ -1,4 +1,4 @@
-import { Task, TaskList } from "../models/index";
+import { Task, TaskList } from '../models/index';
 
 export class TaskController {
 
@@ -10,12 +10,12 @@ export class TaskController {
   constructor() {
 
     this.taskList = new TaskList();
-    this.inputDescrition = document.querySelector('#input-description');
-    this.inputPriority = document.querySelector('#input-priority');
-    this.inputDate = document.querySelector('#input-date');
+    this.inputDescrition = <HTMLInputElement>document.getElementById('input-description');
+    this.inputPriority = <HTMLInputElement>document.getElementById('input-priority');
+    this.inputDate = <HTMLInputElement>document.getElementById('input-date');
   }
 
-  addTask(event: Event) {
+  add(event: Event): void {
 
     event.preventDefault();
 

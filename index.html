@@ -7,19 +7,75 @@
     <title>Smartlist</title>
 </head>
 <body>
-
-    <div id="task-list"></div>
-
-    <form id="task-form" action="">
-        <label for="">Description</label>
-        <input type="text" name="" id="input-description">
-        <label for="">Priority</label>
-        <input type="number" name="" id="input-priority">
-        <label for="">Date</label>
-        <input type="date" name="" id="input-date">
-        <button type="submit">Add</button>
-    </form>
-
+    
+    <style>
+        html, body {
+            background-color: #DDD;
+            margin: 0 auto;
+        }
+        
+        ul, li {
+            list-style-type: none;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            max-width: 820px;
+            background-color: #FFF;
+        }
+        
+        .btn-submit {
+            background-color: #000;
+            color: #FFF;
+            border: none;
+            border-radius: none;
+        } 
+        
+        .task {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: #EEE;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+    </style>
+    
+    <div class="container">
+        
+        <div id="task-list"></div>
+        
+        <ul class="task">
+            <div>
+                <li class="description">Description</li>
+                <li class="priority">1</li>
+                <li class="date">12/12/2019</li> 
+            </div>
+        </ul>
+        
+        <form id="task-form" action="">
+            <label for="">Description</label>
+            <input type="text" name="" id="input-description">
+            <label for="">Priority</label>
+            <input type="number" name="" id="input-priority">
+            <label for="">Date</label>
+            <input type="date" name="" id="input-date">
+            <button class="btn-submit" type="submit">Add</button>
+        </form>
+        
+    </div>
+    
     <script src="dist/bundle.js"></script>
     
 </body>

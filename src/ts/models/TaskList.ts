@@ -8,4 +8,9 @@ export class TaskList {
 
     this.taskList.push(task);
   }
+
+  list() {
+
+    return [].concat(this.taskList);
+  }
 }

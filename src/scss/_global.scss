@@ -1,3 +1,22 @@
-body {
-    background-color: $main-background;
+html, body {
+    background-color: #DDD;
+    margin: 0 auto;
+}
+
+ul, li {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    max-width: 820px;
+    background-color: #FFF;
 }

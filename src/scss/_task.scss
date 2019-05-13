@@ -1,0 +1,31 @@
+.high-priority {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid red;
+}
+
+.medium-priority {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(243, 154, 52);
+}
+
+.low-priority {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(255, 218, 52);
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #EEE;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}

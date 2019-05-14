@@ -10,34 +10,25 @@
     
     <div class="container">
         
-        <ul id="list" class="task-list">
-            <li class="task">
-                <p class="description"><i class="far fa-check-circle high-priority"></i>Description</p>
-                <p class="date">12/12/2019</p> 
-            </li>
-            <li class="task">  
-                <p class="description"><i class="far fa-check-circle medium-priority"></i>Description</p>
-                <p class="date">12/12/2019</p> 
-            </li>
-            <li class="task">  
-                <p class="description"><i class="far fa-check-circle low-priority"></i>Description</p>
-                <p class="date">12/12/2019</p> 
-            </li>
-        </ul>
+        <h1>List</h1>
         
-        <form id="task-form" action="">
-            <label for="">Description</label>
+        <ul id="list" class="task-list"></ul>
+        
+        <form id="task-form" class="task-form" action="">
             <input type="text" name="" id="input-description">
-            <label for="">Priority</label>
-            <input type="text" name="" id="input-priority">
-            <label for="">Date</label>
+            <select name="" id="input-priority">
+                <option value="none"></option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
             <input type="date" name="" id="input-date">
-            <button class="btn-submit" type="submit">Add</button>
+            <button id="btn-add" class="btn-submit" type="submit"><i class="fas fa-plus-circle"></i>Add Task</button>
         </form>
-        
+
     </div>
     
     <script src="dist/bundle.js"></script>
-    
+
 </body>
 </html>

@@ -1,11 +1,13 @@
 html, body {
-    background-color: #DDD;
+    background-color: #FAFAFA;
     margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #393333;
 }
 
 ul, li {
     list-style-type: none;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
 }
 
@@ -19,4 +21,5 @@ ul, li {
     min-height: 100vh;
     max-width: 820px;
     background-color: #FFF;
+    border: 1px solid #F1F1F1;
 }

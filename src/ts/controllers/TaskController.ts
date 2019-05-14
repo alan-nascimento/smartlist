@@ -7,7 +7,7 @@ export class TaskController {
   private inputPriority: HTMLInputElement;
   private inputDate : HTMLInputElement;
   private taskList = new TaskList();
-  private taskView = new TaskView('task-list');
+  private taskView = new TaskView('list');
 
   constructor() {
 

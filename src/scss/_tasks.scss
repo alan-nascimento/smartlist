@@ -1,0 +1,58 @@
+%priority {
+    font-size: 20px;
+    margin-right: 10px;
+    opacity: 0.5;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 50px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: initial;
+    box-sizing: border-box;
+    min-width: 100%;
+    padding: 0 10px;
+    margin-bottom: 5px;
+}
+
+.high-priority {
+    @extend %priority;
+    color: #DE4C4A;
+}
+
+.medium-priority {
+    @extend %priority;
+    color: #F49C2D;
+}
+
+.low-priority {
+    @extend %priority;
+    color: #4073D6;
+}
+
+.high-priority:hover,
+.medium-priority:hover,
+.low-priority:hover {
+    opacity: 1;
+}
+
+.description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+}
+
+.date {
+    margin-left: 10px;
+}

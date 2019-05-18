@@ -19,7 +19,11 @@ export class TaskView {
                 <p class="description">
                   <i class="far fa-check-circle ${task.priority}-priority"></i>${task.description}
                 </p>
-                <p class="date">${task.date}</p>
+                <p class="date">
+                  ${task.date.getDate()} /
+                  ${task.date.getMonth() + 1} /
+                  ${task.date.getFullYear()}
+                </p>
             </li>
             `)}
         `;

@@ -25,7 +25,8 @@ export class TaskController {
     const task = new Task(
       this.inputDescrition.value,
       this.inputPriority.value,
-      new Date(this.inputDate.value));
+      new Date(this.inputDate.value.replace(/-/g, '/')),
+    );
 
     this.taskList.add(task);
     console.log(this.taskList);

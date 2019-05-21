@@ -11,21 +11,27 @@
     
     <div class="container">
         
-        <h1>List</h1>
-        
-        <ul id="list" class="task-list"></ul>
-        
+        <h1>Smartlist</h1>
+                
         <form id="task-form" class="task-form" action="">
+            <label>Description</label>
             <input type="text" name="" id="input-description">
+            <label>Priority</label>
             <select name="" id="input-priority">
                 <option value="none"></option>
                 <option value="high">High</option>
                 <option value="medium">Medium</option>
                 <option value="low">Low</option>
             </select>
+            <label>Date</label>
             <input type="date" name="" id="input-date">
-            <button id="btn-add" class="btn-submit" type="submit"><i class="fas fa-plus-circle"></i>Add Task</button>
+            <div class="btn-container">
+                <button id="btn-add" class="btn" type="submit"><i class="fas fa-plus-circle"></i>Add</button>
+                <button id="btn-import" class="btn"><i class="fas fa-file-import"></i>Import</button>
+            </div>
         </form>
+
+        <ul id="list" class="task-list"></ul>
         
         <div id="options" class="dropdown">
             <i class="fas fa-ellipsis-h"></i>

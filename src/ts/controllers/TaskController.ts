@@ -29,8 +29,25 @@ export class TaskController {
     );
 
     this.taskList.add(task);
-    console.log(this.taskList);
 
     this.taskView.update(this.taskList);
+
+    fetch('http://localhost:3000/api/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(task),
+    })
+    .then(res => res.json())
+    .then(task => console.log(JSON.stringify(task)))
+    .catch(err => console.error(err));
   }
+
+  import() {
+
+    fetch('http://localhost:3000/api/tasks')
+      .then(res => res.json())
+      .then(tasks => console.log(tasks))
+      .catch(err => console.log(err));
+  }
+
 }

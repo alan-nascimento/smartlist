@@ -18,6 +18,8 @@
 .task {
     display: flex;
     justify-content: space-between;
+    background-color: transparent;
+    border-bottom: 1px solid #BBB;
     align-items: initial;
     box-sizing: border-box;
     min-width: 100%;
@@ -27,17 +29,17 @@
 
 .high-priority {
     @extend %priority;
-    color: #DE4C4A;
+    color: $high-priority-color;
 }
 
 .medium-priority {
     @extend %priority;
-    color: #F49C2D;
+    color: $medium-priority-color;
 }
 
 .low-priority {
     @extend %priority;
-    color: #4073D6;
+    color: $low-priority-color;
 }
 
 .high-priority:hover,
@@ -70,16 +72,17 @@
 
 .dropdown {
     position: relative;
-    display: inline-block;
+    display: list-item;
+    list-style-type: none;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
+    border: 1px solid #DDD;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
+    padding: 10px 12px;
     z-index: 1;
 }
 

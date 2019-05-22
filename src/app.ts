@@ -5,7 +5,8 @@ import './scss/smartlist.scss';
 
 const controller = new TaskController();
 
-document.getElementById('task-form').onsubmit = controller.add.bind(controller);
+$('#task-form').submit(controller.add.bind(controller));
+$('#btn-import').click(controller.import.bind(controller));
 
 $('#options').on('click', () => {
   $(this)

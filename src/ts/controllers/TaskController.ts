@@ -4,18 +4,18 @@ import { TaskService } from '../services/index';
 
 export class TaskController {
 
-  private inputDescrition: HTMLInputElement;
-  private inputPriority: HTMLInputElement;
-  private inputDate : HTMLInputElement;
+  private inputDescrition: JQuery;
+  private inputPriority: JQuery;
+  private inputDate : JQuery;
   private taskList = new TaskList();
   private taskView = new TaskView('list');
   private taskService = new TaskService();
 
   constructor() {
 
-    this.inputDescrition = <HTMLInputElement>document.getElementById('input-description');
-    this.inputPriority = <HTMLInputElement>document.getElementById('input-priority');
-    this.inputDate = <HTMLInputElement>document.getElementById('input-date');
+    this.inputDescrition = $('#input-description');
+    this.inputPriority = $('#input-priority');
+    this.inputDate = $('#input-date');
 
     this.taskView.update(this.taskList);
   }
@@ -25,9 +25,9 @@ export class TaskController {
     event.preventDefault();
 
     const task = new Task(
-      this.inputDescrition.value,
-      this.inputPriority.value,
-      new Date(this.inputDate.value.replace(/-/g, '/')),
+      this.inputDescrition.val.toString(),
+      this.inputPriority.val.toString(),
+      new Date(this.inputDate.val.toString().replace(/-/g, '/')),
     );
 
     this.taskList.add(task);
@@ -47,11 +47,8 @@ export class TaskController {
   importTasks() {
 
     function isOk(res: Response) {
-      if (res.ok) {
-        return res;
-      } else {
-        throw new Error(res.statusText);
-      }
+      if (res.ok) return res;
+      Promise.reject(res.statusText);
     }
 
     this.taskService

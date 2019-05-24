@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     
@@ -9,9 +10,18 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: 'dist'
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            hash: true,
+            minify: {
+                html5: true,
+                collapseWhitespace: true,
+                removeComments: true,
+            },    
+            filename: 'index.html',
+            template: __dirname + '/main.html'
+        }),
         new MiniCssExtractPlugin({
             filename: 'styles.css',
             chunkFilename: 'styles.css'
@@ -19,7 +29,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
-        })
+        }),
+        new webpack.optimize.ModuleConcatenationPlugin(),
     ],
     module: {
         rules: [

@@ -1,5 +1,6 @@
 import { Task, TaskList } from '../models/index';
 import { TaskView } from '../views/index';
+import { TaskService } from '../services/index';
 
 export class TaskController {
 
@@ -8,6 +9,7 @@ export class TaskController {
   private inputDate : HTMLInputElement;
   private taskList = new TaskList();
   private taskView = new TaskView('list');
+  private taskService = new TaskService();
 
   constructor() {
 
@@ -18,7 +20,7 @@ export class TaskController {
     this.taskView.update(this.taskList);
   }
 
-  add(event: Event): void {
+  addTask(event: Event): void {
 
     event.preventDefault();
 
@@ -42,12 +44,21 @@ export class TaskController {
     .catch(err => console.error(err));
   }
 
-  import() {
+  importTasks() {
 
-    fetch('http://localhost:3000/api/tasks')
-      .then(res => res.json())
-      .then(tasks => console.log(tasks))
-      .catch(err => console.log(err));
+    function isOk(res: Response) {
+      if (res.ok) {
+        return res;
+      } else {
+        throw new Error(res.statusText);
+      }
+    }
+
+    this.taskService
+      .getTasks(isOk)
+      .then((tasks :Task[]) => {
+        tasks.forEach(task => this.taskList.add(task));
+        this.taskView.update(this.taskList);
+      });
   }
-
 }

@@ -1,21 +1,24 @@
 import { Task, TaskList } from '../models/index';
 import { TaskView } from '../views/index';
 import { TaskService } from '../services/index';
+import { domInject, throttle } from '../helpers/decorators/index';
 
 export class TaskController {
 
+  @domInject('#input-description')
   private inputDescrition: JQuery;
+
+  @domInject('#input-priority')
   private inputPriority: JQuery;
+
+  @domInject('#input-date')
   private inputDate : JQuery;
+
   private taskList = new TaskList();
   private taskView = new TaskView('list');
   private taskService = new TaskService();
 
   constructor() {
-
-    this.inputDescrition = $('#input-description');
-    this.inputPriority = $('#input-priority');
-    this.inputDate = $('#input-date');
 
     this.taskView.update(this.taskList);
   }
@@ -44,6 +47,7 @@ export class TaskController {
     .catch(err => console.error(err));
   }
 
+  @throttle()
   importTasks() {
 
     function isOk(res: Response) {

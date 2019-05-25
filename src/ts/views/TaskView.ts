@@ -1,20 +1,13 @@
-import { Task, TaskList } from '../models/index';
+import { TaskList } from '../models/index';
+import { View } from './index';
 
-export class TaskView {
-
-  private element: Element;
-
-  constructor(selector: string) {
-    this.element = document.getElementById(selector);
-  }
-
-  update(model: TaskList): void {
-    this.element.innerHTML = this.render(model);
-  }
+export class TaskView extends View<TaskList> {
 
   render(model: TaskList): string {
+
     return `
-      ${model.list().map(task => `
+      ${model.list().map(task =>
+        `
         <li class="task">
             <p class="description">
               <i class="far fa-check-circle ${task.priority}-priority"></i>${task.description}
@@ -26,7 +19,8 @@ export class TaskView {
               <i class="fas fa-ellipsis-h"></i>
             </p>
         </li>
-      `)}
+      `,
+      ).join('')}
     `;
   }
 }

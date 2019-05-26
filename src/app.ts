@@ -7,7 +7,7 @@ const controller = new TaskController();
 
 $('#task-form').submit(controller.addTask.bind(controller));
 $('#btn-import').click(controller.importTasks.bind(controller));
+$('#remove').click(controller.delete.bind(controller));
+$('#edit').click(controller.edit.bind(controller));
 
-$('#options').on('click', () => {
-  $(this)
-});
+$('#close-message').on('click', () => alert('daf'));

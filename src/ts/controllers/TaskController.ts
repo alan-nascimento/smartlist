@@ -1,6 +1,5 @@
 import { Task, TaskList } from '../models/index';
 import { TaskView, MessageView } from '../views/index';
-import { TaskService } from '../services/index';
 import { domInject, throttle } from '../helpers/decorators/index';
 
 export class TaskController {
@@ -17,8 +16,6 @@ export class TaskController {
   private taskList = new TaskList();
   private taskView = new TaskView('#list');
   private messageView = new MessageView('#message-view');
-
-  private taskService = new TaskService();
 
   constructor() {
 
@@ -56,7 +53,10 @@ export class TaskController {
 
     try {
 
-      const tasksToImport = await this.taskService
+      const { TaskService } = await import('../services/TaskService');
+      const service = new TaskService();
+
+      const tasksToImport = await service
         .getTasks((res) => {
 
           if (res.ok) return res;
@@ -68,10 +68,29 @@ export class TaskController {
           this.taskList.add(task));
 
       this.taskView.update(this.taskList);
-      this.messageView.update('Task imported with success!');
+      this.messageView.update('Tasks imported with success!');
 
     } catch(err) {
       this.messageView.update(err);
     }
+  }
+
+  delete(id: string) {
+
+    fetch(`http://localhost:3000/api/tasks/${id}`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({id: '5cdf9b80e5b7b14d0048ff31'})
+    })
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+
+    this.taskView.update(this.taskList);
+    this.messageView.update('Task deleted with success!');
+  }
+
+  edit(id: string) {
+    alert('Test');
   }
 }

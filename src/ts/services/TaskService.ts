@@ -13,6 +13,12 @@ export class TaskService {
       )
       .catch(err => console.log(err));
   }
+
+  addTask() {}
+
+  removeTask() {}
+
+  editTask() {}
 }
 
 export interface HandlerFunction {

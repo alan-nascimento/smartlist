@@ -10,13 +10,15 @@ export class TaskView extends View<TaskList> {
         `
         <li class="task">
             <p class="description">
-              <i class="far fa-check-circle ${task.priority}-priority"></i>${task.description}
+              <i class="far fa-check-circle ${task.priority.toLowerCase()}-priority"></i>
+              ${task.description}
             </p>
             <p class="date">
               ${task.date.getDate()} /
               ${task.date.getMonth()} /
               ${task.date.getFullYear()}
-              <i class="fas fa-ellipsis-h"></i>
+              <i id="edit" class="far fa-edit"></i>
+              <i id="remove" class="far fa-trash-alt"></i>
             </p>
         </li>
       `,

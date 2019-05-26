@@ -9,6 +9,7 @@ module.exports = {
     entry:  './src/app.ts',
     output: {
         filename: 'bundle.js',
+        chunkFilename: "[name].chunk.js",
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [

@@ -13,12 +13,14 @@ export class TaskController {
   @domInject('#input-date')
   private inputDate : JQuery;
 
+// tslint:disable-next-line: variable-name
+  private _id: string;
+
   private taskList = new TaskList();
   private taskView = new TaskView('#list');
   private messageView = new MessageView('#message-view');
 
   constructor() {
-
     this.taskView.update(this.taskList);
   }
 
@@ -28,15 +30,11 @@ export class TaskController {
     const date = new Date(this.inputDate.val().toString().replace(/-/g, ','));
 
     const task = new Task(
+      this._id,
       this.inputDescrition.val().toString(),
       this.inputPriority.val().toString(),
       date,
     );
-
-    this.taskList.add(task);
-
-    this.taskView.update(this.taskList);
-    this.messageView.update('Task added with success!');
 
     fetch('http://localhost:3000/api/tasks', {
       method: 'POST',
@@ -45,7 +43,13 @@ export class TaskController {
     })
     .then(res => res.json())
     .then(task => console.log(JSON.stringify(task)))
+    .then()
     .catch(err => console.error(err));
+
+    this.taskList.add(task);
+
+    this.taskView.update(this.taskList);
+    this.messageView.update('Task added with success!');
   }
 
   @throttle()
@@ -69,6 +73,7 @@ export class TaskController {
 
       this.taskView.update(this.taskList);
       this.messageView.update('Tasks imported with success!');
+      console.log(this.taskList);
 
     } catch(err) {
       this.messageView.update(err);

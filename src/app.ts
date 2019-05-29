@@ -10,4 +10,4 @@ $('#btn-import').click(controller.importTasks.bind(controller));
 $('#remove').click(controller.delete.bind(controller));
 $('#edit').click(controller.edit.bind(controller));
 
-$('#close-message').on('click', () => alert('daf'));
+$('.close-message').on('click', () => alert('daf'));

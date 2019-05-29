@@ -1,4 +1,10 @@
 export class Task {
 
-  constructor(readonly description: string, readonly priority: string, readonly date: Date) {}
+  constructor(
+// tslint:disable-next-line: variable-name
+    readonly _id: string,
+    readonly description: string,
+    readonly priority: string,
+    readonly date: Date,
+    ) {}
 }

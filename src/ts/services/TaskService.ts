@@ -9,7 +9,7 @@ export class TaskService {
       .then(res => res.json())
       .then(res =>
         res.docs.map((task: Task) => 
-          new Task(task.description, task.priority, new Date(task.date)))
+          new Task(task._id, task.description, task.priority, new Date(task.date)))
       )
       .catch(err => console.log(err));
   }

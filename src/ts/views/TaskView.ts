@@ -17,8 +17,8 @@ export class TaskView extends View<TaskList> {
               ${task.date.getDate()} /
               ${task.date.getMonth()} /
               ${task.date.getFullYear()}
-              <i id="edit" class="far fa-edit"></i>
-              <i id="remove" class="far fa-trash-alt"></i>
+              <i id="edit" class="far fa-edit" data-id="${task.id}></i>
+              <i class="far fa-trash-alt remove" data-id="${task.id}"></i>
             </p>
         </li>
       `,

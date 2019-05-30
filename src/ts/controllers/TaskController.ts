@@ -25,7 +25,10 @@ export class TaskController {
   }
 
   @throttle()
-  addTask(): void {
+  async addTask() {
+
+    const { TaskService } = await import('../services/TaskService');
+    const service = new TaskService();
 
     const date = new Date(this.inputDate.val().toString().replace(/-/g, ','));
 
@@ -36,17 +39,8 @@ export class TaskController {
       date,
     );
 
-    fetch('http://localhost:3000/api/tasks', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(task),
-    })
-    .then(res => res.json())
-    .then(task => console.log(JSON.stringify(task)))
-    .then()
-    .catch(err => console.error(err));
-
-    this.taskList.add(task);
+    await service.postTask(task);
+    await this.importTasks();
 
     this.taskView.update(this.taskList);
     this.messageView.update('Task added with success!');
@@ -80,16 +74,12 @@ export class TaskController {
     }
   }
 
-  delete(id: string) {
+  async delete(id: string) {
 
-    fetch(`http://localhost:3000/api/tasks/${id}`, {
-      method: 'DELETE',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({id: '5cdf9b80e5b7b14d0048ff31'})
-    })
-    .then(res => res.json())
-    .then(res => console.log(res))
-    .catch(err => console.error(err));
+    const { TaskService } = await import('../services/TaskService');
+    const service = new TaskService();
+
+    service.deleteTask(id);
 
     this.taskView.update(this.taskList);
     this.messageView.update('Task deleted with success!');

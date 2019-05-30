@@ -14,11 +14,29 @@ export class TaskService {
       .catch(err => console.log(err));
   }
 
-  addTask() {}
+  postTask(task: Task) {
 
-  removeTask() {}
+    fetch('http://localhost:3000/api/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(task),
+    })
+    .then(res => res.json())
+    .then(task => console.log(JSON.stringify(task)))
+    .catch(err => console.error(err));
+  }
 
-  editTask() {}
+  deleteTask(id: string) {
+
+    return fetch(`http://localhost:3000/api/tasks/${id}`, { method: 'DELETE' })
+      .then(res => res.json())
+      .then(json => json);
+  }
+
+  putTask(id: string) {
+
+  }
+
 }
 
 export interface HandlerFunction {

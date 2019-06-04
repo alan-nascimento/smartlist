@@ -26,7 +26,7 @@ export class TaskService {
     .catch(err => console.error(err));
   }
 
-  deleteTask(id: string) {
+  deleteTask(id: string): Promise<Task> {
 
     return fetch(`http://localhost:3000/api/tasks/${id}`, { method: 'DELETE' })
       .then(res => res.json())
@@ -34,9 +34,15 @@ export class TaskService {
   }
 
   putTask(id: string) {
-
+    return fetch(`http://localhost:3000/api/tasks/${id}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(id),
+    })
+      .then(res => res.json())
+      .then(task => console.log(JSON.stringify(task)))
+      .catch(err => console.error(err));
   }
-
 }
 
 export interface HandlerFunction {

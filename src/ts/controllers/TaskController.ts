@@ -44,6 +44,8 @@ export class TaskController {
 
     this.taskView.update(this.taskList);
     this.messageView.update('Task added with success!');
+
+    $('.close-message').off();
   }
 
   @throttle()
@@ -61,7 +63,12 @@ export class TaskController {
           Promise.reject(res.statusText);
         });
 
+      const tasksAlreadyImported = this.taskList.list();
+
       tasksToImport
+        .filter(task => 
+          !tasksAlreadyImported.some(alreadyImported =>
+            task.isEqual(alreadyImported)))
         .forEach(task => 
           this.taskList.add(task));
 
@@ -83,9 +90,12 @@ export class TaskController {
 
     this.taskView.update(this.taskList);
     this.messageView.update('Task deleted with success!');
+
+    $('.delete-task').off();
   }
 
   edit(id: string) {
-    alert('Test');
+
+    $('.edit-task').off();
   }
 }

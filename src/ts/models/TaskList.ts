@@ -1,6 +1,7 @@
 import { Task } from './index';
+import { Equal } from '../helpers/index';
 
-export class TaskList {
+export class TaskList implements Equal<TaskList> {
 
   private taskList: Task[] = [];
 
@@ -10,7 +11,10 @@ export class TaskList {
   }
 
   list() {
-
     return [].concat(this.taskList);
+  }
+
+  isEqual(taskList: TaskList): boolean {
+    return JSON.stringify(this.taskList) === JSON.stringify(taskList.list);
   }
 }

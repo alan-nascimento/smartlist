@@ -1,5 +1,6 @@
 import { TaskList } from '../models/index';
 import { View } from './index';
+import { DateHelper } from '../helpers/index';
 
 export class TaskView extends View<TaskList> {
 
@@ -15,9 +16,7 @@ export class TaskView extends View<TaskList> {
               ${task.description}
             </p>
             <p class="date">
-              ${task.date.getDate()} /
-              ${task.date.getMonth()} /
-              ${task.date.getFullYear()}
+              ${DateHelper.dateToText(task.date)}
               <i class="far fa-edit edit-task" data-id="${task._id}"></i>
               <i class="far fa-trash-alt delete-task" data-id="${task._id}"></i>
             </p>

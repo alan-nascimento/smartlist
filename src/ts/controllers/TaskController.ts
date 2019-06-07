@@ -1,6 +1,7 @@
 import { Task, TaskList } from '../models/index';
 import { TaskView, MessageView } from '../views/index';
 import { domInject, throttle } from '../helpers/decorators/index';
+import { DateHelper } from '../helpers/DateHelper';
 
 export class TaskController {
 
@@ -21,6 +22,7 @@ export class TaskController {
   private messageView = new MessageView('#message-view');
 
   constructor() {
+    this.importTasks();
     this.taskView.update(this.taskList);
   }
 
@@ -31,6 +33,11 @@ export class TaskController {
     const service = new TaskService();
 
     const date = new Date(this.inputDate.val().toString().replace(/-/g, ','));
+
+    if (date.getDate() < new Date().getDate()) {
+      this.messageView.update('The date cannot be less than the current date');
+      return;
+    }
 
     const task = new Task(
       this._id,
@@ -73,8 +80,6 @@ export class TaskController {
           this.taskList.add(task));
 
       this.taskView.update(this.taskList);
-      this.messageView.update('Tasks imported with success!');
-      console.log(this.taskList);
 
     } catch(err) {
       this.messageView.update(err);
@@ -87,6 +92,10 @@ export class TaskController {
     const service = new TaskService();
 
     service.deleteTask(id);
+
+    this.taskList.erase();
+
+    await this.importTasks();
 
     this.taskView.update(this.taskList);
     this.messageView.update('Task deleted with success!');

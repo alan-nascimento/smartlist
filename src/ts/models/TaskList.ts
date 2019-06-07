@@ -10,6 +10,10 @@ export class TaskList implements Equal<TaskList> {
     this.taskList.push(task);
   }
 
+  erase() {
+    this.taskList = [];
+  }
+
   list() {
     return [].concat(this.taskList);
   }

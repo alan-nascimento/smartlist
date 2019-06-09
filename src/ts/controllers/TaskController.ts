@@ -1,5 +1,5 @@
 import { Task, TaskList } from '../models/index';
-import { TaskView, MessageView } from '../views/index';
+import { TaskView, MessageView, AppView } from '../views/index';
 import { domInject, throttle } from '../helpers/decorators/index';
 import { DateHelper } from '../helpers/DateHelper';
 
@@ -20,10 +20,12 @@ export class TaskController {
   private taskList = new TaskList();
   private taskView = new TaskView('#list');
   private messageView = new MessageView('#message-view');
+  private appView = new AppView('#app');
 
   constructor() {
     this.importTasks();
     this.taskView.update(this.taskList);
+    this.appView.update('Smartlist');
   }
 
   @throttle()

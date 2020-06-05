@@ -4,7 +4,7 @@
     "es6": true
   },
   "extends": [
-    "airbnb",
+    "airbnb-base",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
@@ -24,7 +24,9 @@
   ],
   "rules": {
     "prettier/prettier": "error",
+    "import/extensions": "off",
     "import/no-duplicates": "off",
+    "import/no-unresolved": "off",
     "no-unused-expressions": "off",
     "import/prefer-default-export": "off",
     "@typescript-eslint/camelcase": "off",
@@ -34,14 +36,6 @@
         "allowExpressions": true
       }
     ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "ts": "never",
-        "tsx": "never"
-      }
-    ]
   },
   "settings": {
     "import/resolver": {

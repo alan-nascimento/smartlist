@@ -1,4 +1,4 @@
-import { TaskController } from './ts/controllers/index';
+import { TaskController } from './ts/controllers';
 import { AppView } from './ts/views/AppView';
 import '@fortawesome/fontawesome-free/js/all';
 import 'jquery/dist/jquery.js';

@@ -1,8 +1,8 @@
-import { TaskController } from './ts/controllers';
-import { AppView } from './ts/views/AppView';
+import { TaskController } from './app/controllers';
+import { AppView } from './app/views/AppView';
 import '@fortawesome/fontawesome-free/js/all';
 import 'jquery/dist/jquery.js';
-import './scss/smartlist.scss';
+import './app/scss/smartlist.scss';
 
 const controller = new TaskController();
 

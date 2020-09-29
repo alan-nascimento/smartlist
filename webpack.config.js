@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/main.ts',
+  entry: './src/main/app.ts',
   output: {
     filename: 'bundle.js',
     chunkFilename: '[name].chunk.js',
@@ -14,8 +14,8 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
     alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -26,15 +26,11 @@ module.exports = {
         removeComments: true,
       },
       filename: 'index.html',
-      template: __dirname + '/src/index.html',
+      template: `${__dirname}/src/main/index.html`,
     }),
     new MiniCssExtractPlugin({
       filename: 'styles.css',
       chunkFilename: 'styles.css',
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
   ],
@@ -71,8 +67,5 @@ module.exports = {
         loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
       },
     ],
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
   },
 };

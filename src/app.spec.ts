@@ -1,4 +1,4 @@
-import { result } from '@/main/app';
+import result from '@/main/app';
 
 describe('TEST', () => {
   it('should return 4', () => {

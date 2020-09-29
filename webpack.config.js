@@ -11,6 +11,12 @@ module.exports = {
     chunkFilename: '[name].chunk.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  resolve: {
+    extensions: ['.ts', '.js'],
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
